@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: crew-management-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+    discovery:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka/
+  rabbitmq:
+    host: localhost
+    port: 5672
+server:
+  port: 8082

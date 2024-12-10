@@ -1,0 +1,16 @@
+{
+  "dashboard": {
+    "title": "Flight Operations Monitoring",
+    "panels": [
+      {
+        "title": "Flight Service Requests",
+        "type": "graph",
+        "targets": [
+          {
+            "target": "flight-service_requests_total"
+          }
+        ]
+      }
+    ]
+  }
+}

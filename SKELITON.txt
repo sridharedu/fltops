@@ -1,0 +1,133 @@
+/flight-operations/
+├── flight-service/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/flight/
+│   │   │   │   ├── controller/       # Contains REST controllers for managing flights and their routes.
+│   │   │   │   ├── service/          # Contains business logic related to flights, route management, and handling flight status updates.
+│   │   │   │   ├── repository/       # JPA repositories for interacting with the 'flights', 'routes', and 'flight_status' tables in the database.
+│   │   │   │   ├── dto/              # Data Transfer Objects for flight and route data transmission.
+│   │   │   │   ├── entity/           # JPA entity classes representing 'flights', 'routes', and 'flight_status' database tables.
+│   │   │   │   ├── config/           # Configuration classes for RabbitMQ, Spring Security, Feign clients, and application properties.
+│   │   │   │   ├── exception/        # Custom exception classes for handling service errors and fault tolerance.
+│   │   │   │   └── fallback/         # Fallback classes for Circuit Breakers to handle service failures gracefully.
+│   │   │   ├── resources/
+│   │   │   │   ├── application.yml   # Configuration file for defining service-specific properties including RabbitMQ settings and service discovery.
+│   │   │   │   └── static/           # Static resources if needed for flight service UI.
+│   │   └── test/                     # Unit and integration tests for testing flight service functionalities.
+│   ├── Dockerfile                    # Dockerfile to containerize the flight service application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Boot, Spring Cloud (Eureka, Circuit Breaker), RabbitMQ, JPA, and other libraries.
+│   └── README.md                     # Documentation explaining how to set up and run the flight service.
+├── crew-management-service/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/crew/
+│   │   │   │   ├── controller/       # REST controllers for managing crew members and their assignments.
+│   │   │   │   ├── service/          # Business logic related to crew assignment, availability, and updates.
+│   │   │   │   ├── repository/       # JPA repositories for interacting with 'crew', 'crew_assignments', and 'crew_availability' tables.
+│   │   │   │   ├── dto/              # Data Transfer Objects for crew data transmission.
+│   │   │   │   ├── entity/           # JPA entity classes representing 'crew', 'crew_assignments', and 'crew_availability' database tables.
+│   │   │   │   ├── config/           # Configuration classes for RabbitMQ, Feign clients, and security.
+│   │   │   │   ├── exception/        # Custom exception classes for handling service errors and fault tolerance.
+│   │   │   │   └── fallback/         # Fallback classes for Circuit Breakers to handle service failures gracefully.
+│   │   │   ├── resources/
+│   │   │   │   ├── application.yml   # Configuration file defining service-specific properties, including RabbitMQ settings and service discovery.
+│   │   │   │   └── static/           # Static resources if needed for crew management service UI.
+│   │   └── test/                     # Unit and integration tests for crew management functionalities.
+│   ├── Dockerfile                    # Dockerfile to containerize the crew management service application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Boot, Spring Cloud (Eureka, Circuit Breaker), RabbitMQ, and other libraries.
+│   └── README.md                     # Documentation explaining how to set up and run the crew management service.
+├── aircraft-management-service/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/aircraft/
+│   │   │   │   ├── controller/       # REST controllers for managing aircraft, maintenance schedules, and tail assignments.
+│   │   │   │   ├── service/          # Business logic related to aircraft management and maintenance.
+│   │   │   │   ├── repository/       # JPA repositories for interacting with 'aircrafts', 'maintenance', and 'tail_assignments' tables.
+│   │   │   │   ├── dto/              # Data Transfer Objects for aircraft data transmission.
+│   │   │   │   ├── entity/           # JPA entity classes representing 'aircrafts', 'maintenance', and 'tail_assignments' database tables.
+│   │   │   │   ├── config/           # Configuration classes for RabbitMQ, Feign clients, and security.
+│   │   │   │   ├── exception/        # Custom exception classes for handling service errors and fault tolerance.
+│   │   │   │   └── fallback/         # Fallback classes for Circuit Breakers to handle service failures gracefully.
+│   │   │   ├── resources/
+│   │   │   │   ├── application.yml   # Configuration file defining service-specific properties, including RabbitMQ settings and service discovery.
+│   │   │   │   └── static/           # Static resources if needed for aircraft management service UI.
+│   │   └── test/                     # Unit and integration tests for aircraft management functionalities.
+│   ├── Dockerfile                    # Dockerfile to containerize the aircraft management service application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Boot, Spring Cloud (Eureka, Circuit Breaker), RabbitMQ, and other libraries.
+│   └── README.md                     # Documentation explaining how to set up and run the aircraft management service.
+├── notification-service/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/notification/
+│   │   │   │   ├── controller/       # REST controllers for managing notifications and alerts.
+│   │   │   │   ├── service/          # Business logic for sending notifications via RabbitMQ.
+│   │   │   │   ├── dto/              # Data Transfer Objects for notification data transmission.
+│   │   │   │   ├── config/           # Configuration classes for RabbitMQ and Feign clients.
+│   │   │   │   ├── exception/        # Custom exception classes for handling service errors and fault tolerance.
+│   │   │   │   └── fallback/         # Fallback classes for Circuit Breakers to handle service failures gracefully.
+│   │   │   ├── resources/
+│   │   │   │   ├── application.yml   # Configuration file defining service-specific properties, including RabbitMQ settings.
+│   │   │   │   └── static/           # Static resources if needed for notification service UI.
+│   │   └── test/                     # Unit and integration tests for notification functionalities.
+│   ├── Dockerfile                    # Dockerfile to containerize the notification service application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Boot, Spring Cloud (Eureka, Circuit Breaker), and other libraries.
+│   └── README.md                     # Documentation explaining how to set up and run the notification service.
+├── user-management-service/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/user/
+│   │   │   │   ├── controller/       # REST controllers for managing user accounts and authentication.
+│   │   │   │   ├── service/          # Business logic for user registration, authentication, and role management.
+│   │   │   │   ├── repository/       # JPA repositories for interacting with 'users', 'roles', and 'user_roles' tables.
+│   │   │   │   ├── dto/              # Data Transfer Objects for user data transmission.
+│   │   │   │   ├── entity/           # JPA entity classes representing 'users', 'roles', and 'user_roles' database tables.
+│   │   │   │   ├── config/           # Configuration classes for Spring Security, JWT, and Feign clients.
+│   │   │   │   ├── exception/        # Custom exception classes for handling service errors and fault tolerance.
+│   │   │   │   └── fallback/         # Fallback classes for Circuit Breakers to handle service failures gracefully.
+│   │   │   ├── resources/
+│   │   │   │   ├── application.yml   # Configuration file defining service-specific properties, including Spring Security settings.
+│   │   │   │   └── static/           # Static resources if needed for user management service UI.
+│   │   └── test/                     # Unit and integration tests for user management functionalities.
+│   ├── Dockerfile                    # Dockerfile to containerize the user management service application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Boot, Spring Security, RabbitMQ, and other libraries.
+│   └── README.md                     # Documentation explaining how to set up and run the user management service.
+├── config-server/                    # Central Spring Cloud Config server for managing external properties for microservices.
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/config/
+│   │   │   │   ├── ConfigServerApplication.java  # Main application file for the config server.
+│   │   │   │   ├── config/           # Configuration classes for the config server.
+│   │   │   └── resources/
+│   │   │       ├── application.yml   # Configuration file for the config server properties.
+│   │   └── test/                     # Tests for the config server.
+│   ├── Dockerfile                    # Dockerfile to containerize the config server application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Cloud Config.
+│   └── README.md                     # Documentation explaining how to set up and run the config server.
+├── eureka-server/                    # Spring Cloud Eureka server for service discovery.
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/flightops/eureka/
+│   │   │   │   ├── EurekaServerApplication.java  # Main application file for the Eureka server.
+│   │   │   ├── resources/
+│   │   │       ├── application.yml   # Configuration file for the Eureka server properties.
+│   │   └── test/                     # Tests for the Eureka server.
+│   ├── Dockerfile                    # Dockerfile to containerize the Eureka server application.
+│   ├── pom.xml                       # Maven file defining dependencies for Spring Cloud Eureka.
+│   └── README.md                     # Documentation explaining how to set up and run the Eureka server.
+├── docker-compose.yml                # Docker Compose file to orchestrate all microservices and define service dependencies.
+├── monitoring/
+│   ├── prometheus.yml                # Configuration file for Prometheus to monitor microservices.
+│   ├── grafana-dashboard.json         # JSON file for Grafana dashboard configuration to visualize metrics.
+│   └── zipkin-server/                # Zipkin server for distributed tracing.
+│       ├── src/
+│       │   ├── main/
+│       │   │   ├── java/com/flightops/zipkin/
+│       │   │   │   ├── ZipkinServerApplication.java  # Main application file for the Zipkin server.
+│       │   │   ├── resources/
+│       │   │       ├── application.yml   # Configuration file for the Zipkin server properties.
+│       │   └── test/                     # Tests for the Zipkin server.
+│       ├── Dockerfile                    # Dockerfile to containerize the Zipkin server application.
+│       ├── pom.xml                       # Maven file defining dependencies for Zipkin.
+│       └── README.md                     # Documentation explaining how to set up and run the Zipkin server.
+└── README.md                         # Documentation for the entire Flight Operations application, detailing installation, usage, architecture, CI/CD considerations, and profiles for development and production.

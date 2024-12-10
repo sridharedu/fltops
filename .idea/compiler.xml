@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="aircraft-management-service" />
+        <module name="crew-management-service" />
+        <module name="user-management-service" />
+        <module name="zipkin-server" />
+        <module name="eureka-server" />
+        <module name="flight-service" />
+        <module name="notification-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="aircraft-management-service" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="crew-management-service" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="flight-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="user-management-service" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
+    </option>
+  </component>
+</project>
