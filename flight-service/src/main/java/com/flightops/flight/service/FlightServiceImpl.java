@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,8 +34,27 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<FlightDTO> getAllFlights() {
-        return flightRepository.findAll().stream()
+    public List<FlightDTO> getAllFlights(String status, LocalDate date) {
+        List<Flight> flights;
+
+        if (status != null && date != null) {
+            flights = flightRepository.findByFlightStatusAndScheduledTime(
+                    status,
+                    date.atStartOfDay(),
+                    date.plusDays(1).atStartOfDay()
+            );
+        } else if (status != null) {
+            flights = flightRepository.findByFlightStatus(status);
+        } else if (date != null) {
+            flights = flightRepository.findByScheduledTimeBetween(
+                    date.atStartOfDay(),
+                    date.plusDays(1).atStartOfDay()
+            );
+        } else {
+            flights = flightRepository.findAll();
+        }
+
+        return flights.stream()
                 .map(flight -> modelMapper.map(flight, FlightDTO.class))
                 .collect(Collectors.toList());
     }
