@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/flt_ops_cloud
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: flight-service
+
+  cloud:
+    config:
+      enabled: false
+
+      uri: http://localhost:8888
+    discovery:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka/
+  rabbitmq:
+    host: localhost
+    port: 5672
+server:
+  port: 8081
